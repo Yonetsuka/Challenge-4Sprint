@@ -39,7 +39,8 @@ void loop() {
   // put your main code here, to run repeatedly:
   //garante funcionamento das conexões WiFi e ao broker MQTT
   VerificaConexoesWiFIEMQTT();
-  distanciaCm = verDist()
+  verDist();
+  delay(1000);
   MQTT.loop();
 }
 
@@ -162,5 +163,7 @@ void verDist(){
   // Prints the distance in the Serial Monitor
   Serial.print("Distance (cm): ");
   Serial.println(distanceCm);
+  dtostrf(distanceCm, 4, 2, msgBuffer);
+  MQTT.publish(TOPICO_PUBLISH,msgBuffer);
   return(distanceCm);
 }
