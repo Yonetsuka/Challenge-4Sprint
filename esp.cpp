@@ -2,6 +2,10 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
+//definindo pinagem esp
+const int trigPin = 5;
+const int echoPin = 18;
+
 //definindo id mqtt
 #define ID_MQTT  "fiware_112"
 
