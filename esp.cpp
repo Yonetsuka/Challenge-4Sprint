@@ -10,7 +10,7 @@ const int echoPin = 18;
 #define ID_MQTT  "fiware_112"
 
 //declarando variável
-Float distancia;
+float distancia;
 
 #define SOUND_SPEED 0.034
 
@@ -18,11 +18,11 @@ long duration;
 float distanceCm;
 
 //Tópicos
-#define TOPICO_PUBLISH   "/TEF/lamp101/attrs/d"
+#define TOPICO_PUBLISH   "/TEF/lamp112/attrs/d"
 
 // WIFI
-const char* SSID = ""; // SSID / nome da rede WI-FI que deseja se conectar
-const char* PASSWORD = ""; // Senha da rede WI-FI que deseja se conectar
+const char* SSID = "FIAP-IBM"; // SSID / nome da rede WI-FI que deseja se conectar
+const char* PASSWORD = "Challenge@23!"; // Senha da rede WI-FI que deseja se conectar
 
 // MQTT
 const char* BROKER_MQTT = "46.17.108.113"; //URL do broker MQTT que se deseja utilizar
@@ -35,6 +35,8 @@ int D4 = 2;
 
 void setup(){
   Serial.begin(115200);
+  pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
+  pinMode(echoPin, INPUT); // Sets the echoPin as an Input
   initWiFi();
   initMQTT();
 }
@@ -125,14 +127,14 @@ void mqtt_callback(char* topic, byte* payload, unsigned int length)
     //verifica se deve colocar nivel alto de tensão na saída D0:
     //IMPORTANTE: o Led já contido na placa é acionado com lógica invertida (ou seja,
     //enviar HIGH para o output faz o Led apagar / enviar LOW faz o Led acender)
-    if (msg.equals("lamp101@on|"))
+    if (msg.equals("lamp112@on|"))
     {
         digitalWrite(D4, HIGH);
         EstadoSaida = '1';
     }
  
     //verifica se deve colocar nivel alto de tensão na saída D0:
-    if (msg.equals("lamp101@off|"))
+    if (msg.equals("lamp112@off|"))
     {
         digitalWrite(D4, LOW);
         EstadoSaida = '0';
@@ -169,5 +171,4 @@ void verDist(){
   Serial.println(distanceCm);
   dtostrf(distanceCm, 4, 2, msgBuffer);
   MQTT.publish(TOPICO_PUBLISH,msgBuffer);
-  return(distanceCm);
 }
