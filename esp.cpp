@@ -1,6 +1,15 @@
 //importando bibliotecas
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C LCD = LiquidCrystal_I2C(0x27, 16, 2);
+
+//pinagem
+#define BUZZ_PIN 25
+#define GLED_PIN 5
+#define YLED_PIN 4
+#define RLED_PIN 23
 
 //definindo pinagem esp
 const int trigPin = 5;
@@ -35,6 +44,12 @@ int D4 = 2;
 
 void setup(){
   Serial.begin(115200);
+  pinMode(GLED_PIN, OUTPUT);
+  pinMode(YLED_PIN, OUTPUT);
+  pinMode(RLED_PIN, OUTPUT);
+  digitalWrite(GLED_PIN, LOW);
+  digitalWrite(YLED_PIN, LOW);
+  digitalWrite(RLED_PIN, LOW);
   pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
   pinMode(echoPin, INPUT); // Sets the echoPin as an Input
   initWiFi();
