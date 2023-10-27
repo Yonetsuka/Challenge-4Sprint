@@ -223,3 +223,33 @@ void verDist2(){
   dtostrf(distanceCm2, 4, 2, msgBuffer);
   MQTT.publish(TOPICO_PUBLISH_2,msgBuffer);
 }
+
+void checarDist(){
+  //digitalWrite(GLED_PIN, HIGH);
+  //digitalWrite(YLED_PIN, HIGH);
+  //digitalWrite(RLED_PIN, HIGH);
+  if (50 < distanciaCm && distanciaCm < 100){
+    LCD.clear();
+    digitalWrite(YLED_PIN, HIGH);
+  }
+  else if (distanceCm < 50){
+    LCD.clear();
+    LCD.setCursor(0,0);
+    LCD.print("Você esta perto de");
+    LCD.setCursor(0,1);
+    LCD.print("sensor 1");
+    digitalWrite(RLED_PIN, HIGH);
+  }
+  if (50 < distanciaCm && distanciaCm < 100){
+    LCD.clear();
+    digitalWrite(YLED_PIN, HIGH);
+  }
+  else if(distanceCm2 < 50){
+    LCD.clear();
+    LCD.setCursor(0,0);
+    LCD.print("Voce esta perto de");
+    LCD.setCursor(0,1);
+    LCD.print("sensor 2");
+    digitalWrite(RLED_PIN, HIGH);
+  }
+}
