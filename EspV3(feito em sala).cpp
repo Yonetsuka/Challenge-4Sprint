@@ -231,6 +231,7 @@ void checarDist(){
   if (50 < distanciaCm && distanciaCm < 100){
     LCD.clear();
     digitalWrite(YLED_PIN, HIGH);
+    MQTT.publish(TOPICO_PUBLISH,"Meia distancia");
   }
   else if (distanceCm < 50){
     LCD.clear();
@@ -239,10 +240,12 @@ void checarDist(){
     LCD.setCursor(0,1);
     LCD.print("sensor 1");
     digitalWrite(RLED_PIN, HIGH);
+    MQTT.publish(TOPICO_PUBLISH,"Próximo");
   }
   if (50 < distanciaCm && distanciaCm < 100){
     LCD.clear();
     digitalWrite(YLED_PIN, HIGH);
+    MQTT.publish(TOPICO_PUBLISH2,"Meia distancia");
   }
   else if(distanceCm2 < 50){
     LCD.clear();
@@ -251,5 +254,6 @@ void checarDist(){
     LCD.setCursor(0,1);
     LCD.print("sensor 2");
     digitalWrite(RLED_PIN, HIGH);
+    MQTT.publish(TOPICO_PUBLISH2,"Próximo");
   }
 }
