@@ -15,7 +15,7 @@ EchoChoice se trata sobre um aplicativo em que o usuário usa de uma IA que irá
 
 # Sobre MQTT
 Ele é um protocolo de comunicação IOT que se baseia em publicação e assinatura através de tópicos, onde os dispositivos ou publicam mensagens em seus tópicos ou eles recebem mensagens através de inscrições em tópicos.
-![Exemplificação de funcionamento]([https://raw.githubusercontent.com/Yonetsuka/Challenge-4Sprint/main/deletarDps.png](https://raw.githubusercontent.com/Yonetsuka/Challenge-4Sprint/main/DeletarDps.png))
+![Exemplificação de funcionamento](https://raw.githubusercontent.com/Yonetsuka/Challenge-4Sprint/main/DeletarDps.png)
 
 # Montagem do circuito
 No circuito foi utiliza dois sensores de distância, um lcd com o módulo i2c, três leds (1 vermelho, 1 verde e 1 amarelo) e resistores de 1k ohm.
