@@ -19,6 +19,7 @@ Ele é um protocolo de comunicação IOT que se baseia em publicação e assinat
 
 # Montagem do circuito
 No circuito foi utiliza dois sensores de distância, um lcd com o módulo i2c, três leds (1 vermelho, 1 verde e 1 amarelo) e resistores de 1k ohm.
+
 ![Imagem do circuito montado](https://raw.githubusercontent.com/Yonetsuka/Challenge-4Sprint/main/Screenshot%202023-10-30%20102121.png)
 
 # Sobre o código
