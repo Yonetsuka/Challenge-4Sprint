@@ -198,6 +198,21 @@ void verDist(){
   Serial.println(distanceCm);
   dtostrf(distanceCm, 4, 2, msgBuffer);
   MQTT.publish(TOPICO_PUBLISH,msgBuffer);
+  //colocando nova mensagem
+  if (50 < distanciaCm && distanciaCm < 100){
+    LCD.clear();
+    digitalWrite(YLED_PIN, HIGH);
+    MQTT.publish(TOPICO_PUBLISH,"Meia distancia");
+  }
+  else if (distanceCm < 50){
+    LCD.clear();
+    LCD.setCursor(0,0);
+    LCD.print("Você esta perto de");
+    LCD.setCursor(0,1);
+    LCD.print("sensor 1");
+    digitalWrite(RLED_PIN, HIGH);
+    MQTT.publish(TOPICO_PUBLISH,"Próximo");
+  }
 }
 
 void verDist2(){
@@ -222,27 +237,8 @@ void verDist2(){
   Serial.println(distanceCm2);
   dtostrf(distanceCm2, 4, 2, msgBuffer);
   MQTT.publish(TOPICO_PUBLISH_2,msgBuffer);
-}
-
-void checarDist(){
-  //digitalWrite(GLED_PIN, HIGH);
-  //digitalWrite(YLED_PIN, HIGH);
-  //digitalWrite(RLED_PIN, HIGH);
-  if (50 < distanciaCm && distanciaCm < 100){
-    LCD.clear();
-    digitalWrite(YLED_PIN, HIGH);
-    MQTT.publish(TOPICO_PUBLISH,"Meia distancia");
-  }
-  else if (distanceCm < 50){
-    LCD.clear();
-    LCD.setCursor(0,0);
-    LCD.print("Você esta perto de");
-    LCD.setCursor(0,1);
-    LCD.print("sensor 1");
-    digitalWrite(RLED_PIN, HIGH);
-    MQTT.publish(TOPICO_PUBLISH,"Próximo");
-  }
-  if (50 < distanciaCm && distanciaCm < 100){
+  //mandando mensagem nova
+  if (50 < distanceCm2 && distanceCm2 < 100){
     LCD.clear();
     digitalWrite(YLED_PIN, HIGH);
     MQTT.publish(TOPICO_PUBLISH2,"Meia distancia");
